@@ -1,8 +1,10 @@
 //
-//  HomeViewModel.swift
-//  MyWeyt
-//
-//  Created by Sefa Sarikaya on 04.05.25.
+//  HomeViewModel.swift : # Manages current tab selection
 //
 
 import Foundation
+import SwiftUI
+
+class HomeViewModel: ObservableObject {
+    @Published var selectedTab: TabItem = .home
+}

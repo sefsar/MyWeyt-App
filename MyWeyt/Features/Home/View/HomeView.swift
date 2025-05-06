@@ -1,18 +1,30 @@
 //
-//  HomeView.swift
-//  MyWeyt
-//
-//  Created by Sefa Sarikaya on 04.05.25.
+//  HomeView.swift : # Main screen with TabBar
 //
 
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel = HomeViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottom) {
+            TabView(selection: $viewModel.selectedTab) {
+                Text("🏠 Home Screen")
+                    .tag(TabItem.home)
+
+                Text("➕ Add New Entry")
+                    .tag(TabItem.add)
+
+                Text("👤 Profile + Settings Screen")
+                    .tag(TabItem.profile)
+            }
+            .ignoresSafeArea(.keyboard)
+
+            CustomTabBar(selectedTab: $viewModel.selectedTab)
+        }
     }
 }
-
-#Preview {
+#Preview{
     HomeView()
 }
