@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// Import the App Flow Manager
-@_spi(Skip) import class MyWeyt.AppFlowManager
-
 struct CombinedLoginView: View {
     @EnvironmentObject var flow: AppFlowManager
     @State private var selectedLoginType = 0 // 0 for local, 1 for online
@@ -17,15 +14,16 @@ struct CombinedLoginView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                // Add some space at the top for better positioning
-                Spacer(minLength: 60)
+            VStack(spacing: 0) { // Zero spacing between elements
+                // Add space at the top (for future image placement)
+                Spacer(minLength: 40)
+                Image("CharacterOnScale")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: geometry.size.height * 0.5)
+                                        .padding(.top, 10)
+                Spacer(minLength: 20)
                 
-                // App name or logo could go here
-                Text("MyWeyt")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 40)
                 
                 // Modern custom segmented control for login type with glowing effect
                 HStack(spacing: 0) {
@@ -61,29 +59,30 @@ struct CombinedLoginView: View {
                 // Add shadow to the whole switcher
                 .shadow(color: Color.black.opacity(0.2), radius: 12, x: 0, y: 5)
                 .padding(.horizontal, 24)
-                .padding(.bottom, 30)
+                // No bottom padding at all
                 
-                // Swipeable content area
-                ZStack {
+                // Login content with absolutely no gap after switcher
+                VStack(spacing: 0) {
                     // Local login view
                     if selectedLoginType == 0 {
-                        LocalLoginScreen()
+                        LocalLoginView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .leading),
                                 removal: .move(edge: .trailing)
                             ))
                     } else {
                         // Online login view
-                        OnlineLoginScreen()
+                        OnlineLoginView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .trailing),
                                 removal: .move(edge: .leading)
                             ))
                     }
                 }
+                .padding(.top, 0) // Ensure zero padding at top
                 .animation(.spring(), value: selectedLoginType)
                 
-                Spacer(minLength: 20)
+                Spacer() // Push content up
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .gesture(
@@ -103,7 +102,7 @@ struct CombinedLoginView: View {
                     }
             )
         }
-        .background(Color(.systemBackground))
+        .background(Color(.white))
     }
 }
 
@@ -156,7 +155,7 @@ struct CombinedLoginView_Previews: PreviewProvider {
 }
 
 // Your existing views (placeholders here)
-struct LocalLoginView: View {
+/*struct LocalLoginView: View {
     var body: some View {
         // Your existing local login implementation
         VStack {
@@ -174,4 +173,4 @@ struct vOnlineLoginView: View {
             // Apple/Google sign-in buttons, etc.
         }
     }
-}
+}*/

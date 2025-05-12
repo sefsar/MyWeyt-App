@@ -29,20 +29,15 @@ struct RootFlowView: View {
                     StorageChoiceView()
                         .transition(.opacity)
                 case .localLogin:
-                    LocalLoginScreen()
+                    LocalLoginView()
                         .transition(.slide)
                 case .onlineLogin:
-                    OnlineLoginScreen()
+                    OnlineLoginView()
                         .transition(.slide)
                 case .combinedLogin:
                     CombinedLoginView()
                         .environmentObject(flow)
-                        .transition(
-                            .asymmetric(
-                                insertion: .opacity.animation(.easeInOut(duration: 0.8)),
-                                removal: .opacity
-                            )
-                        )
+                        .transition(.opacity)
                 case .mainApp:
                     HomeView() // This is your real app screen
                         .transition(.opacity)

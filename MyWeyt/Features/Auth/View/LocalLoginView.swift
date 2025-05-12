@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct LocalLoginScreen: View {
+struct LocalLoginView: View {
     @EnvironmentObject var flow: AppFlowManager
     @State private var username: String = ""
     @State private var showError = false
 
     var body: some View {
         VStack(spacing: 30) {
-            Spacer()
-
             Text("Enter a Username")
                 .font(.largeTitle)
                 .bold()
+                .padding(.top, 20)
 
             TextField("Your name", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -44,7 +43,9 @@ struct LocalLoginScreen: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(12)
+                    .frame(maxWidth: 220)
+                    .font(.headline)
+                    .cornerRadius(80)
                     .padding(.horizontal)
             }
 
@@ -59,7 +60,7 @@ struct LocalLoginScreen: View {
     }
 }
 
-
 #Preview {
     LocalLoginView()
+        .environmentObject(AppFlowManager())
 }

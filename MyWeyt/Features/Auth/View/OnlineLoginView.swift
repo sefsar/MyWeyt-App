@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct OnlineLoginScreen: View {
+struct OnlineLoginView: View {
     @EnvironmentObject var flow: AppFlowManager
 
     var body: some View {
         VStack(spacing: 30) {
-            Spacer()
-
             Text("Login Online")
-                .font(.title2)
+                .font(.largeTitle)
                 .bold()
+                .padding(.top, 20)
 
             Button(action: {
                 // TODO: Integrate Sign in with Apple
@@ -56,7 +55,7 @@ struct OnlineLoginScreen: View {
     }
 }
 
-
 #Preview {
-    OnlineLoginScreen()
+    OnlineLoginView()
+        .environmentObject(AppFlowManager())
 }
