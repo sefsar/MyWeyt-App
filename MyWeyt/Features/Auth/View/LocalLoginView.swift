@@ -19,10 +19,19 @@ struct LocalLoginView: View {
                 .bold()
                 .padding(.top, 20)
 
-            TextField("Your name", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Your username", text: $username)
+                .font(.system(size: 20, weight: .semibold)) // semibold
+                .padding(.vertical, 10) // Vertical padding for height
                 .padding(.horizontal)
+                .background(Color(.systemBlue.withAlphaComponent(0.2))) // Background color
+                .cornerRadius(10) // Rounded corners
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.blue, lineWidth: 1) // Border
+                )
                 .autocapitalization(.none)
+                .frame(maxWidth: 330)
+
 
             if showError {
                 Text("Username cannot be empty.")
@@ -31,6 +40,11 @@ struct LocalLoginView: View {
             }
 
             Button(action: {
+                // Dismiss keyboard using the responder chain
+                #if canImport(UIKit)
+                hideKeyboard()
+                #endif
+                
                 if username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     showError = true
                 } else {
@@ -52,15 +66,28 @@ struct LocalLoginView: View {
             Spacer()
         }
         .padding()
+        .contentShape(Rectangle())
+        .onTapGesture {
+            // Dismiss keyboard when tapping outside the text field
+            #if canImport(UIKit)
+            hideKeyboard()
+            #endif
+        }
     }
 
     func saveUserLocally() {
         // For now we'll use UserDefaults (we can replace this with CoreData later)
         UserDefaults.standard.set(username, forKey: "localUsername")
     }
+    
+    // Safe way to hide the keyboard
+    private func hideKeyboard() {
+        #if canImport(UIKit)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        #endif
+    }
 }
 
 #Preview {
     LocalLoginView()
-        .environmentObject(AppFlowManager())
 }

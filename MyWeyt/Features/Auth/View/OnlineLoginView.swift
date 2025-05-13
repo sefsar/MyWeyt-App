@@ -18,12 +18,12 @@ struct OnlineLoginView: View {
                 .padding(.top, 20)
 
             Button(action: {
-                // TODO: Integrate Sign in with Apple
-                print("Sign in with Apple")
+                // MARK: Integrate Login with Apple
+                print("Login with Apple")
             }) {
                 HStack {
                     Image(systemName: "applelogo")
-                    Text("Sign in with Apple")
+                    Text("Login with Apple")
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -34,12 +34,12 @@ struct OnlineLoginView: View {
             .padding(.horizontal)
 
             Button(action: {
-                // TODO: Integrate Sign in with Google
-                print("Sign in with Google")
+                // MARK: Integrate Login with Google
+                print("Login with Google")
             }) {
                 HStack {
                     Image(systemName: "globe")
-                    Text("Sign in with Google")
+                    Text("Login with Google")
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -52,6 +52,14 @@ struct OnlineLoginView: View {
             Spacer()
         }
         .padding()
+        .contentShape(Rectangle())
+    }
+    
+    // Safe way to hide the keyboard if needed
+    private func hideKeyboard() {
+        #if canImport(UIKit)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        #endif
     }
 }
 
