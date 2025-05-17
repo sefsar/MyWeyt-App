@@ -6,13 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C98C060B2DD5BE5600FE9377 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C98C060A2DD5BE5600FE9377 /* FirebaseAnalytics */; };
+		C98C060D2DD5BE5600FE9377 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C98C060C2DD5BE5600FE9377 /* FirebaseAuth */; };
+		C98C060F2DD5BE5600FE9377 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = C98C060E2DD5BE5600FE9377 /* FirebaseCore */; };
+		C98C06112DD5BE5600FE9377 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C98C06102DD5BE5600FE9377 /* FirebaseCrashlytics */; };
+		C98C06132DD5BE5600FE9377 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C98C06122DD5BE5600FE9377 /* FirebaseFirestore */; };
+		C98C06152DD5BE5600FE9377 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C98C06142DD5BE5600FE9377 /* FirebaseMessaging */; };
+		C98C06172DD5BE5600FE9377 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C98C06162DD5BE5600FE9377 /* FirebaseStorage */; };
+		C98C061C2DD5C9FE00FE9377 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C98C061B2DD5C9FE00FE9377 /* GoogleSignIn */; };
+		C98C061E2DD5C9FE00FE9377 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C98C061D2DD5C9FE00FE9377 /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		C941D2792DC708A500D2CFE0 /* MyWeyt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeyt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C9E6B98F2DD870FD005B38C2 /* Exceptions for "MyWeyt" folder in "MyWeyt" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				App/Info.plist,
+			);
+			target = C941D2782DC708A500D2CFE0 /* MyWeyt */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C941D29A2DC70AEF00D2CFE0 /* MyWeyt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C9E6B98F2DD870FD005B38C2 /* Exceptions for "MyWeyt" folder in "MyWeyt" target */,
+			);
 			path = MyWeyt;
 			sourceTree = "<group>";
 		};
@@ -23,6 +48,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98C061E2DD5C9FE00FE9377 /* GoogleSignInSwift in Frameworks */,
+				C98C06152DD5BE5600FE9377 /* FirebaseMessaging in Frameworks */,
+				C98C061C2DD5C9FE00FE9377 /* GoogleSignIn in Frameworks */,
+				C98C060B2DD5BE5600FE9377 /* FirebaseAnalytics in Frameworks */,
+				C98C06112DD5BE5600FE9377 /* FirebaseCrashlytics in Frameworks */,
+				C98C060F2DD5BE5600FE9377 /* FirebaseCore in Frameworks */,
+				C98C06172DD5BE5600FE9377 /* FirebaseStorage in Frameworks */,
+				C98C06132DD5BE5600FE9377 /* FirebaseFirestore in Frameworks */,
+				C98C060D2DD5BE5600FE9377 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +99,15 @@
 			);
 			name = MyWeyt;
 			packageProductDependencies = (
+				C98C060A2DD5BE5600FE9377 /* FirebaseAnalytics */,
+				C98C060C2DD5BE5600FE9377 /* FirebaseAuth */,
+				C98C060E2DD5BE5600FE9377 /* FirebaseCore */,
+				C98C06102DD5BE5600FE9377 /* FirebaseCrashlytics */,
+				C98C06122DD5BE5600FE9377 /* FirebaseFirestore */,
+				C98C06142DD5BE5600FE9377 /* FirebaseMessaging */,
+				C98C06162DD5BE5600FE9377 /* FirebaseStorage */,
+				C98C061B2DD5C9FE00FE9377 /* GoogleSignIn */,
+				C98C061D2DD5C9FE00FE9377 /* GoogleSignInSwift */,
 			);
 			productName = MyWeyt;
 			productReference = C941D2792DC708A500D2CFE0 /* MyWeyt.app */;
@@ -94,6 +137,10 @@
 			);
 			mainGroup = C941D2702DC708A500D2CFE0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C98C061A2DD5C9FE00FE9377 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C941D27A2DC708A500D2CFE0 /* Products */;
 			projectDirPath = "";
@@ -254,7 +301,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeyt/Preview Content\"";
 				DEVELOPMENT_TEAM = 2G7GV9BCFT;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyWeyt/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyWeyt;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -290,7 +338,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeyt/Preview Content\"";
 				DEVELOPMENT_TEAM = 2G7GV9BCFT;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyWeyt/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyWeyt;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -338,6 +387,73 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+		C98C061A2DD5C9FE00FE9377 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C98C060A2DD5BE5600FE9377 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C98C060C2DD5BE5600FE9377 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C98C060E2DD5BE5600FE9377 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		C98C06102DD5BE5600FE9377 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C98C06122DD5BE5600FE9377 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		C98C06142DD5BE5600FE9377 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		C98C06162DD5BE5600FE9377 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C06092DD5BE5600FE9377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		C98C061B2DD5C9FE00FE9377 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C061A2DD5C9FE00FE9377 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		C98C061D2DD5C9FE00FE9377 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C98C061A2DD5C9FE00FE9377 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C941D2712DC708A500D2CFE0 /* Project object */;
 }

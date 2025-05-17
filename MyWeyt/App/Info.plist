@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+    <!-- App display name -->
+    <key>CFBundleDisplayName</key>
+    <string>MyWeyt</string>
+
+    <!-- App bundle identifier -->
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+    <!-- Executable name -->
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    
+    <!-- Google Sign-In Client ID from Firebase GoogleService-Info.plist -->
+    <key>GIDClientID</key>
+    <string>841660677135-hv6is5glieohlni444ua5m4kdp5pvvub.apps.googleusercontent.com</string>
+    
+    <!-- App versioning -->
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- App category -->
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.healthcare-fitness</string>
+
+    <!-- Launch screen generation -->
+    <key>UILaunchScreen</key>
+    <dict/>
+
+    <!-- Status bar style -->
+    <key>UIStatusBarStyle</key>
+    <string>UIStatusBarStyleLightContent</string>
+
+    <!-- Supported interface orientations -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <!-- Google Sign-In URL types -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.841660677135-hv6is5glieohlni444ua5m4kdp5pvvub</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Google Sign-In: allow URL schemes -->
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>google</string>
+        <string>com-google-gidconsent</string>
+        <string>com.google.gppconsent</string>
+        <string>com.googleusercontent.apps.841660677135-hv6is5glieohlni444ua5m4kdp5pvvub</string>
+    </array>
+
+    <!-- Scene manifest for SwiftUI -->
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+        <key>UISceneConfigurations</key>
+        <dict>
+            <key>UIWindowSceneSessionRoleApplication</key>
+            <array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>Default Configuration</string>
+                    <key>UISceneDelegateClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+
+</dict>
+</plist>
