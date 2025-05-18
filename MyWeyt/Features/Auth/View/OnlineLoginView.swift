@@ -16,8 +16,12 @@ struct OnlineLoginView: View {
     // Animation states
     @State private var isAnimating = false
     @State private var isLoading = false
+    @State private var isAppleLoading = false
     @State private var fadeOpacity = 1.0
     @State private var showLoggingInMessage = false
+
+    // Create a single instance of the coordinator to prevent recreation on view refresh
+    @State private var coordinator = AppleSignInCoordinator()
     
     var body: some View {
         VStack(spacing: 30) {
@@ -30,11 +34,21 @@ struct OnlineLoginView: View {
 
             Button(action: {
                 // MARK: Integrate Login with Apple
-                print("Login with Apple")
+                withAnimation(.easeOut(duration: 0.5)) {
+                    isAppleLoading = true
+                    fadeOpacity = 0.5
+                }
+                handleAppleSignIn()
             }) {
                 HStack {
-                    Image(systemName: "applelogo")
-                    Text("Login with Apple")
+                    if isAppleLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .padding(.trailing, 5)
+                    } else {
+                        Image(systemName: "applelogo")
+                    }
+                    Text(isAppleLoading ? "Signing in..." : "Login with Apple")
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -42,6 +56,7 @@ struct OnlineLoginView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
+            .disabled(isAppleLoading || isLoading)
             .padding(.horizontal)
             .opacity(isAnimating ? 1 : 0)
             .offset(y: isAnimating ? 0 : 20)
@@ -70,7 +85,7 @@ struct OnlineLoginView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
-            .disabled(isLoading)
+            .disabled(isLoading || isAppleLoading)
             .padding(.horizontal)
             .opacity(isAnimating ? 1 : 0)
             .offset(y: isAnimating ? 0 : 40)
@@ -93,7 +108,57 @@ struct OnlineLoginView: View {
             withAnimation(Animation.easeOut(duration: 0.8).delay(0.1)) {
                 isAnimating = true
             }
+            
+            // Setup coordinator callbacks once when the view appears
+            setupAppleCoordinator()
         }
+    }
+    
+    // Configure Apple Sign-In Coordinator
+    private func setupAppleCoordinator() {
+        coordinator.onSignInSuccess = { 
+            // Add print to debug
+            print("Apple Sign-In Success Callback Triggered")
+            
+            // Show logging in message with animation on the main thread
+            DispatchQueue.main.async {
+                withAnimation(.easeIn(duration: 0.3)) {
+                    self.showLoggingInMessage = true
+                    self.isAppleLoading = false
+                }
+                
+                // Animate transition to main app
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(.easeInOut(duration: 1.2)) {
+                        self.fadeOpacity = 0.0
+                    }
+                    
+                    // Navigate to main app after fade out completes
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.flow.completeLogin()
+                    }
+                }
+            }
+        }
+        
+        coordinator.onSignInError = { 
+            // Add print to debug
+            print("Apple Sign-In Error Callback Triggered")
+            
+            // Reset UI on the main thread
+            DispatchQueue.main.async {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    self.isAppleLoading = false
+                    self.fadeOpacity = 1.0
+                }
+            }
+        }
+    }
+    
+    // Initiate Apple Sign-In
+    private func handleAppleSignIn() {
+        print("Starting Apple Sign-In")
+        coordinator.startSignInWithAppleFlow()
     }
     
     // Handling Google Sign in Action
